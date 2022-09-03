@@ -8,8 +8,9 @@ export const connectDb = (handler : NextApiHandler) =>
     console.log('MongoDb readystate', mongoose.connections[0].readyState);
     if(mongoose.connections[0].readyState){
         return handler(req, res);
-    }
+    } 
 
+    
     const {DB_CONNECTION_STRING} = process.env;
     if(!DB_CONNECTION_STRING){
         return res.status(500).json({ error : "ENV Database connection não informada"});
